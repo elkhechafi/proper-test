@@ -60,15 +60,15 @@ async function getRepo(pageNo){
            }
            div.classList.add('card');
            content =`
-               <div id="${data.items[i].id}" class="avatar">
-                   <img class="avatar_url" src="${data.items[i].owner.avatar_url}" alt="" height="150" width="200">
+               <div id="${data.items[i].id}">
+                   <img src="${data.items[i].owner.avatar_url}" alt="" height="150" width="200">
                </div>
-               <div class="content">
-                   <h2 class="Repository_Name">${data.items[i].name}</h2>
-                   <p class="Description">${data.items[i].description}</p>
-                   <h4 class="stars">${data.items[i].stargazers_count}</h4>
-                   <h4 class="Issues">${data.items[i].open_issues}</h4>
-                   <p class="interval">Submitted ${elapsedTime} ago by: ${data.items[i].owner.login}</p>
+               <div>
+                   <h2 >${data.items[i].name}</h2>
+                   <p>${data.items[i].description}</p>
+                   <h4>${data.items[i].stargazers_count}</h4>
+                   <h4>${data.items[i].open_issues}</h4>
+                   <p>Submitted ${elapsedTime} ago by: ${data.items[i].owner.login}</p>
                </div>
            `;
            div.innerHTML = content;
