@@ -20,6 +20,10 @@ let newArr = [];
 
 let fetchedDay = myPastDate.getDate();
 let month = myPastDate.getMonth() + 1;
+//formate the date in order to integrate it to the actual link
+let dynamicDAte = myCurrentDate.getDate()+'-'+(myCurrentDate.getMonth()+1)+'-'+myCurrentDate.getFullYear();
+let dynamicDAteDisplay = document.querySelector('#dynamicDate');
+dynamicDAteDisplay.innerHTML = dynamicDAte;
 
 function day_of_the_month(fetchedDay)
     { 
@@ -58,22 +62,40 @@ async function getRepo(pageNo){
            else{
                elapsedTime = days+ ' days'
            }
+           //avoid the null in the description
+           let description;
+           if(data.items[i].description == null){
+                data.items[i].description = 'No description availible';
+           }else{
+                data.items[i].description=data.items[i].description;
+           }
            div.classList.add('card');
            content =`
-               <div id="${data.items[i].id}">
-                   <img src="${data.items[i].owner.avatar_url}" alt="" height="150" width="200">
-               </div>
-               <div>
-                   <h2 >${data.items[i].name}</h2>
-                   <p>${data.items[i].description}</p>
-                   <h4>${data.items[i].stargazers_count}</h4>
-                   <h4>${data.items[i].open_issues}</h4>
-                   <p>Submitted ${elapsedTime} ago by: ${data.items[i].owner.login}</p>
-               </div>
+               <div id="${data.items[i].id}" class="avatar">
+                       <img class="avatar_url" src="${data.items[i].owner.avatar_url}" alt="" height="100" width="300">
+                   </div>
+                   <div class="content">
+                       <h2 class="Repository_Name">${data.items[i].name}</h2>
+                       <p class="Description">${data.items[i].description}</p>
+                       <h4 class="stars"><span class="fa fa-star checked"></span> : ${data.items[i].stargazers_count}</h4>
+                       <h4 class="Issues">${data.items[i].open_issues}</h4>
+                       <p class="interval">Submitted ${elapsedTime} ago by: ${data.items[i].owner.login}</p>
+                   </div>
            `;
            div.innerHTML = content;
            mainContainer.appendChild(div);
     }
+    document.querySelector('.loader').style.display = 'none';
     return myPastDate;
 };  
 
+window.addEventListener('scroll',() =>{
+    if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && pageNo < 20){
+            pageNo += 1;
+            document.querySelector('.loader').style.display = 'inline-flex';
+            setTimeout(() => {
+            getRepo(pageNo);
+            }, 1500);
+            return pageNo;
+    }
+});
