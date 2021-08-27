@@ -59,11 +59,13 @@ async function getRepo(pageNo){
            }else if(hours < 1){
             elapsedTime = minutes+' minutes'
            }
+           else if(days == 1){
+                elapsedTime = days+ ' day'
+           }
            else{
                elapsedTime = days+ ' days'
            }
            //avoid the null in the description
-           let description;
            if(data.items[i].description == null){
                 data.items[i].description = 'No description availible';
            }else{
@@ -78,7 +80,7 @@ async function getRepo(pageNo){
                        <h2 class="Repository_Name">${data.items[i].name}</h2>
                        <p class="Description">${data.items[i].description}</p>
                        <h4 class="stars"><span class="fa fa-star checked"></span> : ${data.items[i].stargazers_count}</h4>
-                       <h4 class="Issues">${data.items[i].open_issues}</h4>
+                       <h4 class="Issues">Issues : ${data.items[i].open_issues}</h4>
                        <p class="interval">Submitted ${elapsedTime} ago by: ${data.items[i].owner.login}</p>
                    </div>
            `;
@@ -95,7 +97,7 @@ window.addEventListener('scroll',() =>{
             document.querySelector('.loader').style.display = 'inline-flex';
             setTimeout(() => {
             getRepo(pageNo);
-            }, 1500);
+            }, 750);
             return pageNo;
     }
 });

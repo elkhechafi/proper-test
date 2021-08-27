@@ -1,0 +1,207 @@
+$primary-color: #fff;
+$border-radius: 5px;
+$black-color: #351897;
+$bg1: #E91E63;
+$bg2: #9C27B0;
+$black-dark: #101010;
+$black-light: #2c3e50;
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F0F5FF;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    color: rgb(0, 0, 0);
+    width: 100%;
+   }
+
+   .topFilter{
+    width: 100%;
+    height: max-content;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #000;
+    color: inherit;
+    .title{
+        width: 30%;
+        padding: 1% 3% 1% 3%;
+    }
+    .dynamicDate{
+        width: 20%;
+    }
+    .filter{
+        width: 50%;
+        background-color: aqua;
+        height: inherit;
+    }
+}
+.card{
+	background: #FFFFFF;
+    box-shadow: 0px 16.1856px 25.5562px -12.7781px rgba(0, 48,  209,0.153027);
+    border-radius: 12.7781px;
+    padding:34px;
+    position: relative;
+    // display: grid;
+    grid-template-columns: 300px 600px;
+    width: 90%;
+    margin: 2% 5% 0% 5%;
+    height: max-content;
+    min-height: max-content;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    .avatar{
+        width: 30%;
+        height: 100%;
+        box-sizing: inherit;
+        height: inherit;
+        box-shadow: 0px 16.1856px 25.5562px -12.7781px rgba(0, 49, 209, 0.582);
+        .avatar_url{
+            background-color: khaki;
+            width: 20rem;
+            width: 100%;
+            margin: 0;
+            border-radius: $border-radius 0 0 $border-radius;
+        }
+    }
+    .content{
+        width: 70%;
+        min-height: 10rem;
+        height: max-content;
+        display: inherit;
+        flex-wrap: wrap;
+        border-radius: 25px;
+        .Repository_Name{
+            width: 100%;
+            padding: 2% 0% 0% 2%;
+            color: rgb(0, 0, 0);
+            font-weight: 700;
+        }
+        .Description{
+            width: 100%;
+            padding: 2% 0% 0% 2%;
+            text-align: justify;
+            width: 70%;
+            margin-right: 10%;
+        }
+        .stars{
+            width: 15%;
+            padding: 2% 0% 0% 2%;
+            margin: 0% 5%;
+            span{
+                font-size: 0.8rem;
+                color: #ffa800;
+                margin: -5px 0 20px;
+            }
+        }
+        .Issues{
+            width: 18%;
+            padding: 2% 0% 0% 2%;
+        }
+        .interval{
+            width: 45%;
+            padding: 2% 0% 0% 2%;
+        }
+    }
+}
+
+.loader {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    margin-top: 3%;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    perspective: 800px;
+    .inner {
+        position: absolute;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;  
+    }
+    .one {
+        left: 0%;
+        top: 0%;
+        animation: rotate-one 1s linear infinite;
+        border-bottom: 3px solid #2c3e50;
+    }
+    .two {
+        right: 0%;
+        top: 0%;
+        animation: rotate-two 1s linear infinite;
+        border-right: 3px solid #2c3e50;
+    }
+    .three {
+        right: 0%;
+        bottom: 0%;
+        animation: rotate-three 1s linear infinite;
+        border-top: 3px solid #2c3e50;
+    }
+    @keyframes rotate-one {
+        0% {
+          transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+        }
+        100% {
+          transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+        }
+      }
+      
+      @keyframes rotate-two {
+        0% {
+          transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+        }
+        100% {
+          transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+        }
+      }
+      
+      @keyframes rotate-three {
+        0% {
+          transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+        }
+        100% {
+          transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+        }
+      }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .card{
+        .content{
+            box-sizing: content-box;
+            overflow-x: scroll;
+            border-radius: 0%;
+            .stars{
+                width: 45%;
+                padding: 2% 0% 0% 2%;
+                margin: 0% 5%;
+                span{
+                    font-size: 0.8rem;
+                    color: #ffa800;
+                    margin: -5px 0 20px;
+                }
+            }
+            .Issues{
+                width: 45%;
+                padding: 2% 0% 0% 2%;
+            }
+            .interval{
+                width: 100%;
+                padding: 2% 0% 0% 2%;
+            }
+        }
+    }
+  }
